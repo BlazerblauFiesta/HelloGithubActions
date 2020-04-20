@@ -53,5 +53,5 @@ jobs:
           cd ./python
           echo "${{ secrets.DOCKERPW }}" | docker login docker.pkg.github.com -u "ahmedmmoussa" --password-stdin
           #docker login -u "ahmedmmoussa" -p "A7med#mou$sa"
-          docker image build -t ahmedmmoussa/gitops:hellogithubactionsv1.1 .
-          docker push ahmedmmoussa/gitops:hellogithubactionsv1.1
+          docker image build -t ahmedmmoussa/hellogithubactions:v1.1 .
+          docker push ahmedmmoussa/hellogithubactions:v1.1
