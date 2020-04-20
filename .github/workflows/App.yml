@@ -56,4 +56,4 @@ jobs:
           #cat my_password.txt | docker login docker.pkg.github.com --username ahmedmmoussa --password-stdin
           docker image build -t ahmedmmoussa/hellogithubactions:v1.1 .
           docker tag v1.1 ahmedmmoussa/hellogithubactions:v1.1 
-          docker push ahmedmmoussa/hellogithubactions:v1.1
+          docker push docker.io/ahmedmmoussa/hellogithubactions:v1.1
