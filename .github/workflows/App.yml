@@ -53,25 +53,9 @@ jobs:
           cd ./python
           docker build -t ahmedmmoussa/newgitops:hellov1.0 .
 
-      #- name: Login to DockerHub
-      #  env:
-      #    Docker_USER: "${{ secrets.Docker_USER }}"
-      #    Docker_PWD: "${{ secrets.Docker_PWD }}"
-      #  run: |
-      #    docker login docker.io -u $Docker_USER -p $Docker_PWD
-
       - name: Login to DockerHub Registry
         run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
 
-        #61b2911e-1865-49d0-95ca-d6f1ac9cf266
       - name: Push Docker Image to DockerHub
         run: |
-          #cd ./python
-          #echo "${{ secrets.DOCKERPW }}" | docker login docker.pkg.github.com -u "ahmedmmoussa" --password-stdin
-          #docker login -u "ahmedmmoussa" -p "A7med#mou$sa"
-          #cat my_password.txt | docker login docker.pkg.github.com --username ahmedmmoussa --password-stdin
-          #docker image build -t ahmedmmoussa/hellogithubactions:v1.1 .
-          #docker tag hellogithubactions:v1.1 ahmedmmoussa/hellogithubactions:v1.1 
-          #docker push docker.io/ahmedmmoussa/hellogithubactions:v1.1
-          #docker image build -t ahmedmmoussa/gitops:hellov1.0 .
           docker push ahmedmmoussa/newgitops:hellov1.0
