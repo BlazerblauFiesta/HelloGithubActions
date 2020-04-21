@@ -50,7 +50,7 @@ jobs:
           pip install -r ./python/requirements.txt
       - name: Build Docker Image
         run: |
-          docker image build ./python -t ahmedmmoussa/gitops:hellov1.0 .
+          docker build ./python -t ahmedmmoussa/newgitops:hellov1.0 .
 
       - name: Login to DockerHub
         env:
