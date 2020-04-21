@@ -48,14 +48,24 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r ./python/requirements.txt
-      - name: Build & Push Image
+      - name: Build Docker Image
         run: |
-          cd ./python
-          echo "${{ secrets.DOCKERPW }}" | docker login docker.pkg.github.com -u "ahmedmmoussa" --password-stdin
+          docker image build ./python -t ahmedmmoussa/gitops:hellov1.0 .
+
+      - name: Login to DockerHub
+        env:
+          Docker_USER: "${{ secrets.Docker_USER }}"
+          Docker_PWD: "${{ secrets.Docker_PWD }}"
+        run: |
+          docker login -u Docker_USER -p Docker_PWD
+      - name: Push Docker Image to DockerHub
+        run: |
+          #cd ./python
+          #echo "${{ secrets.DOCKERPW }}" | docker login docker.pkg.github.com -u "ahmedmmoussa" --password-stdin
           #docker login -u "ahmedmmoussa" -p "A7med#mou$sa"
           #cat my_password.txt | docker login docker.pkg.github.com --username ahmedmmoussa --password-stdin
           #docker image build -t ahmedmmoussa/hellogithubactions:v1.1 .
           #docker tag hellogithubactions:v1.1 ahmedmmoussa/hellogithubactions:v1.1 
           #docker push docker.io/ahmedmmoussa/hellogithubactions:v1.1
-          docker image build -t ahmedmmoussa/gitops:hellov1.0 .
+          #docker image build -t ahmedmmoussa/gitops:hellov1.0 .
           docker push ahmedmmoussa/gitops:hellov1.0
